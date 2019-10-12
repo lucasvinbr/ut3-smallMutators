@@ -55,11 +55,20 @@ function NewBots(PlayerController Sender, string BotName, int Amount, int Team)
 {
 	local int i;
 	local UTGame Utgame;
+	local string addingMsg;
 	
 	Utgame = UTGame(WorldInfo.Game);
 	
 	if(Utgame != None){
-		Sender.ClientMessage("Adding " $ Amount $ " bot(s) of type " $ BotName);
+		addingMsg = "Adding " $ Amount $ " bot(s) of type " $ BotName;
+		
+		if(Team == 0){
+			addingMsg @= "to the Red team";
+		}else if(Team == 1){
+			addingMsg @= "to the Blue team";
+		}
+		
+		Sender.ClientMessage(addingMsg);
 		
 		for(i = 0; i < Amount; i++){
 			Utgame.AddNamedBot(BotName, Team != 255, Team);
