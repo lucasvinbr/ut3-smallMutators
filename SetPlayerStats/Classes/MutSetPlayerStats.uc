@@ -24,6 +24,7 @@ function ModifyPlayer(Pawn P)
 	{
 		utP.RagdollLifespan = ragdollLifespan;
 		utP.MaxMultiJump = maxJumps;
+		utP.SuperHealthMax = maxHealth;
 	}
 	Super.ModifyPlayer(P);
 }
